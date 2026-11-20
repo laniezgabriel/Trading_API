@@ -1,0 +1,22 @@
+meta {
+  name: Validation error (400)
+  type: http
+  seq: 11
+}
+
+post {
+  url: {{baseUrl}}/api/accounts
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "",
+    "initialCapital": -5
+  }
+}
+
+assert {
+  res.status: eq 400
+}

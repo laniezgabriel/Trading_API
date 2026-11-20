@@ -1,0 +1,24 @@
+meta {
+  name: Update trade
+  type: http
+  seq: 9
+}
+
+put {
+  url: {{baseUrl}}/api/trades/{{tradeId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "instrument": "XAUUSD",
+    "direction": "SELL",
+    "profitLoss": -450,
+    "accountId": {{accountId}}
+  }
+}
+
+assert {
+  res.status: eq 200
+}

@@ -1,0 +1,15 @@
+meta {
+  name: Get trades of an account
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/api/accounts/{{accountId}}/trades
+  body: none
+  auth: none
+}
+
+assert {
+  res.status: eq 200
+}

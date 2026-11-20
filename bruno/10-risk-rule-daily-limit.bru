@@ -1,0 +1,24 @@
+meta {
+  name: Risk rule: daily loss reached (409)
+  type: http
+  seq: 10
+}
+
+post {
+  url: {{baseUrl}}/api/trades
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "instrument": "XAUUSD",
+    "direction": "BUY",
+    "profitLoss": 100,
+    "accountId": {{accountId}}
+  }
+}
+
+assert {
+  res.status: eq 409
+}
