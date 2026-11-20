@@ -1,0 +1,22 @@
+meta {
+  name: Update account
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/api/accounts/{{accountId}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "FundingPips 10k (renamed)",
+    "initialCapital": 10000
+  }
+}
+
+assert {
+  res.status: eq 200
+}

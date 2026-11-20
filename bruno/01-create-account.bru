@@ -1,0 +1,26 @@
+meta {
+  name: Create account
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/accounts
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "FundingPips 10k",
+    "initialCapital": 10000
+  }
+}
+
+assert {
+  res.status: eq 201
+}
+
+script:post-response {
+  bru.setVar("accountId", res.body.id);
+}
